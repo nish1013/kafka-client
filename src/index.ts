@@ -1,12 +1,9 @@
 import { KafkaService } from "./kafkaService";
+import { kafkaConfig } from "./kafkaConfig";
 
 async function run() {
   
-const kafkaHost = "localhost:9092"; // Replace with your Kafka broker address
-const topic = "test-topic"; // Replace with your Kafka topic name
-const clientId = "kafka-client"; // Replace with your Kafka client ID
-
-const kafkaService = new KafkaService([kafkaHost], clientId);
+const kafkaService = new KafkaService([kafkaConfig.kafkaHost], kafkaConfig.clientId);
 
 const message = "Hello Kafka!";
 try {
@@ -14,10 +11,10 @@ try {
    await kafkaService.connect();
 
    // Publish a message to the topic
-   await kafkaService.publishMessage(topic, message);
+   await kafkaService.publishMessage(kafkaConfig.topic, message);
  
    // Consume messages from the topic
-   kafkaService.consumeMessages(topic, (message: string) => {
+   kafkaService.consumeMessages(kafkaConfig.topic, (message: string) => {
      console.log(`Received message: ${message}`);
    });
 
