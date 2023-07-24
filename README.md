@@ -37,8 +37,9 @@ Before running the app, make sure to update the Kafka configuration in `src/kafk
 ```typescript
 // src/kafkaConfig.ts
 export const kafkaConfig = {
-  brokers: ["localhost:9092"], // Replace with your Kafka broker(s) information
-  clientId: "kafka-client-app",
+    brokers :["localhost:9092"], // Replace with your Kafka broker(s) information
+    topic: "test-topic", // Replace with your Kafka topic name
+    clientId:"kafka-client" // Replace with your Kafka client ID
 };
 ```
 

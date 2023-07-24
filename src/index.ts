@@ -3,7 +3,7 @@ import { kafkaConfig } from "./kafkaConfig";
 
 async function run() {
   
-const kafkaService = new KafkaService([kafkaConfig.kafkaHost], kafkaConfig.clientId);
+const kafkaService = new KafkaService(kafkaConfig.brokers, kafkaConfig.clientId);
 
 const message = "Hello Kafka!";
 try {
